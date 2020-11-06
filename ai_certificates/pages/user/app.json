@@ -1,0 +1,52 @@
+{
+    "pages": [
+        
+        "pages/shouye/shouye",
+        "pages/index/index",
+        "pages/photo/photo",
+        "pages/my/my",
+        "pages/order/order",
+        "pages/myinfo/myinfo",
+        "pages/myaddress/myaddress",
+        "pages/addressInfo/addressInfo",
+        "pages/mod_user_password/mod_user_password",
+        "pages/photo_size_info/photo_size_info",
+        "pages/order_info/order_info",
+        "pages/cut_photo/cut_photo",
+        "pages/save_photo/save_photo", 
+        "pages/digital_order/digital_order",
+        "pages/physical_order/physical_order",
+        "pages/choose_size/choose_size"
+        
+        
+        
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "AI证件照小程序",
+        "navigationBarTextStyle": "black"
+    },
+    "usingComponents": {
+        "van-field": "/vantweapp/field/index",
+        "van-icon": "/vantweapp/icon/index",
+        "van-button": "/vantweapp/button/index",
+        "van-checkbox": "/vantweapp/checkbox/index",
+        "van-tabbar": "/vantweapp/tabbar/index",
+        "van-tabbar-item": "/vantweapp/tabbar-item/index",
+        "van-notify": "/vantweapp/notify/index",
+        "van-toast": "/vantweapp/toast/index",
+        "van-popup": "/vantweapp/popup/index",
+        "van-empty": "/vantweapp/empty/index",
+        "van-tab": "/vantweapp/tab/index",
+        "van-tabs": "/vantweapp/tabs/index",
+        "van-slider": "/vantweapp/slider/index",
+        "van-loading": "/vantweapp/loading/index",
+        "van-notice-bar": "/vantweapp/notice-bar/index",
+        "van-submit-bar": "/vantweapp/submit-bar/index",
+        "van-action-sheet": "/vantweapp/action-sheet/index",
+        "van-stepper": "/vantweapp/stepper/index"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

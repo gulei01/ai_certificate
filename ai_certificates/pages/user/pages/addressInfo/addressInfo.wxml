@@ -1,0 +1,12 @@
+<view>
+	<van-field required clearable label="收货人" placeholder="请输入收件人姓名" maxlength="20" model:value="{{accept_user}}" />
+	<van-field required clearable label="联系方式" placeholder="请输入联系方式" maxlength="11" model:value="{{accept_phone}}" />
+	<van-field required clearable label="收货地址" type="textarea" placeholder="省，市，区以及详细地址" autosize model:value="{{accept_address}}" style="min-height:45px !important" />
+	<view wx:if="{{show}}">
+		<button style="width:100% !important; background-color:red;color:#fff;margin-top:5px; margin-bottom:5px;"  bindtap="deleteAddress">删除</button>
+		<button style="width:100% !important; background-color:#7979F8;color:#fff" bindtap="modAddress">修改</button>
+	</view>
+	<view wx:else>
+		<button style="width:100% !important; background-color:#7979F8;color:#fff" bindtap="addAddress">保存</button>
+	</view>
+</view>

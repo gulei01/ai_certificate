@@ -1,0 +1,88 @@
+<view class="page-bg">
+	<van-tabs color="#7979F8" animated>
+		<van-tab title="电子照片">
+			<view wx:for="{{orderDigitalPhotoList}}">
+				<view class="order-item">
+					<view class="order-item-first">
+						<view style="width:40%;height:100%;position:absolute;display:inline-block">
+							<image style="width:100px; height:100px" src="../../static/image/index/logo.jpg"></image>
+						</view>
+						<view style="width:60%; height:100%; display:inline-block;position:absolute;left:40%">
+							<view style="font-weight:600">订单编号:</view>
+							<view style="color:gray">{{item.order_id}}</view>
+							<view style="font-weight:600">订单时间:</view>
+							<view style="color:gray">{{item.create_at}}</view>
+						</view>
+					</view>
+					<view class="order-item-second">
+						<text style="left:7%" bindtap="showOrderInfo" data-index="{{'digital-'+index}}">订单详情</text>
+						<text style="right:7%" wx:if="{{item.order_status == 1}}" bindtap="oneMore">再来一单</text>
+						<text style="right:7%" wx:if="{{item.order_status == 0}}" data-index="{{'digital-'+index}}" bindtap="showOrderInfo">未支付</text>
+
+					</view>
+				</view>
+			</view>
+			<view style="height:150px;width:100%"></view>
+		</van-tab>
+		<van-tab title="实物冲印">
+			<view wx:for="{{orderPhotoList}}">
+				<view class="order-item">
+					<view class="order-item-first">
+						<view style="width:40%;height:100%;position:absolute;display:inline-block">
+							<image style="width:100px; height:100px" src="../../static/image/index/logo.jpg"></image>
+						</view>
+						<view style="width:60%; height:100%; display:inline-block;position:absolute;left:40%">
+							<view style="font-weight:600">订单编号:</view>
+							<view style="color:gray">{{item.order_id}}</view>
+							<view style="font-weight:600">订单时间:</view>
+							<view style="color:gray">{{item.create_at}}</view>
+						</view>
+					</view>
+					<view class="order-item-second">
+						<text style="left:7%" data-index="{{'physical-'+index}}" bindtap="showOrderInfo">订单详情</text>
+						<text style="right:7%" wx:if="{{item.order_status == 1}}" bindtap="oneMore">再来一单</text>
+						<text style="right:7%" data-index="{{'physical-'+index}}" wx:if="{{item.order_status == 0}}" bindtap="showOrderInfo">未支付</text>
+					</view>
+				</view>
+			</view>
+			<view style="height:150px;width:100%"></view>
+		</van-tab>
+	</van-tabs>
+</view>
+
+<van-tabbar active="{{active}}" bind:change="onChange" border="{{false}}">
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/首页.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/首页-选中.svg"></image>
+		<text wx:if="{{active != 0}}">首页</text>
+		<text wx:else class="active">首页</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/相册.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/相册-选中.svg"></image>
+
+		<text wx:if="{{active != 1}}">相册</text>
+		<text wx:else class="active">相册</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<view class="outer-circular">
+			<view class="inner-circular">
+				<view class="white-circular" bindtap="openCamera"></view>
+			</view>
+		</view>
+	</van-tabbar-item>
+
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/订单.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/订单-选中.svg"></image>
+		<text wx:if="{{active != 3}}">订单</text>
+		<text wx:else class="active">订单</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/个人中心.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/个人中心 选中.svg"></image>
+		<text wx:if="{{active != 4}}">我的</text>
+		<text wx:else class="active">我的</text>
+	</van-tabbar-item>
+
+</van-tabbar>

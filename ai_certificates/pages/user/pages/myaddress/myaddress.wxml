@@ -1,0 +1,21 @@
+<!--pages/myaddress/myaddress.wxml-->
+<wxs src="myaddress.wxs" module="tools" />
+<view class="page-bg">
+	<van-empty class="custom-image" image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="当前收货地址为空" wx:if="{{addressList.length == 0}}" />
+	<view wx:for="{{addressList}}" >
+		<view class="item" bindtap="chooseaddress" data-index="{{index}}">
+			<view class="image-container">
+				<image src="../../static/image/index/logo.jpg"></image>
+			</view>
+			<view class="user-info">
+				<text class="user-info-name">{{item.accept_user}}</text>
+				<text class="user-info-phone">{{item.accept_phone}}</text>
+			</view>
+			<view class="user-info-addr">{{item.accept_address}}</view>
+			<navigator class="mod-addr" url="{{'/pages/addressInfo/addressInfo?addressInfo=' + tools.navigator_data(item)}}" catchtap="emptyFunc">编辑</navigator>
+		</view>
+	</view>
+	<view style="widtd:100%; height:35px; margin-top:10px; background-color:#fff">
+		<image src="../../static/image/添加.svg" style="width:20px; height:20px; position:relative;left:50%; top:50%;transform:translate(-50%,-50%);" bindtap="addAddress"></image>
+	</view>
+</view>

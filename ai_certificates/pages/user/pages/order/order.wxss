@@ -1,0 +1,51 @@
+/* pages/order/order.wxss */
+.page-bg{
+    background-color: #f2f2f2;
+    min-height: 100%;
+}
+.van-tab--active { /*标签激活态样式*/
+    color: #7979F8 !important;
+    font-weight: 600 !important;
+}
+.order-item{
+    height: 150px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #fff;
+}
+.order-item-first{
+    width: 100%;
+    height: 70%;
+    
+    position: relative;
+}
+.order-item-second{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.order-item-first view view{
+    width: 90%;
+    height: 23%;
+    text-overflow: ellipsis;
+    text-align: left;
+    /* line-height: 23%; */
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+.order-item-first view image{
+    position: relative;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.order-item-second text{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 7px 15px 7px 15px;
+    background-color: #7979F8;
+    color: #fff;
+    border-radius: 8px;
+}

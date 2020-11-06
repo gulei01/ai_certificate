@@ -1,0 +1,114 @@
+<view class="page-bg">
+	<view class="page-header">
+		<swiper style="height:100%; width:100%" autoplay="true" interval="3500" duration="1000" indicator-dots="true">
+			<block wx:for="{{lunboData}}">
+				<swiper-item>
+					<image src="{{item.imgUrl}}" style="width:100%"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="page-content">
+		<view class="normal-fontsize font-color title-text">常用规格</view>
+		<view class="regular-size">
+			<view class="regular-size-container">
+				<navigator url="/pages/photo_size_info/photo_size_info?text=一寸&spec_id=1&size=25x25mm&pixel=295x413px&color=红 蓝 白">
+					<image src="/static/image/app首页/个人照片.svg"></image>
+					<view class="text">一寸</view>
+					<view class="size">295x413px</view>
+				</navigator>
+			</view>
+			<view class="regular-size-container">
+				<navigator url="/pages/photo_size_info/photo_size_info?text=二寸&spec_id=10&size=35x49mm&pixel=413x578px&color=红 蓝 白">
+					<image src="/static/image/app首页/个人照片.svg"></image>
+					<view class="text">二寸</view>
+					<view class="size">413x578px</view>
+				</navigator>
+			</view>
+			<view class="regular-size-container">
+				<navigator url="/pages/photo_size_info/photo_size_info?text=小二寸&spec_id=13&size=35x45mm&pixel=413x531px&color=红 蓝 白">
+					<image src="/static/image/app首页/个人照片.svg"></image>
+					<view class="text">小二寸</view>
+					<view class="size">413x531px</view>
+				</navigator>
+			</view>
+			<view class="regular-size-container">
+				<navigator url="/pages/photo_size_info/photo_size_info?text=小一寸&spec_id=4&size=22x32mm&pixel=259x377px&color=红 蓝 白">
+					<image src="/static/image/app首页/个人照片.svg"></image>
+					<view class="text">小一寸</view>
+					<view class="size">259x377px</view>
+				</navigator>
+			</view>
+		</view>
+		<view class="normal-fontsize font-color title-text">其他规格</view>
+		<view class="other-size">
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=大一寸&spec_id=7&size=33x48mm&pixel=389x566px&color=红 蓝 白">
+					<text>大一寸</text>
+				</navigator>
+			</view>
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=大二寸&size=35x53mm&pixel=413x625px&color=红 蓝 白">
+					<text>大二寸</text>
+				</navigator>
+			</view>
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=驾照&size=22x32mm&pixel=259x377px&color=白">
+					<text>驾照</text>
+				</navigator>
+			</view>
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=韩国签证&size=35x45mm&pixel=413x513px&color=白">
+					<text>韩国签证</text>
+				</navigator>
+			</view>
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=学生证&size=25x35mm&pixel=295x413px&color=红 蓝 白">
+					<text>学生证</text>
+				</navigator>
+			</view>
+			<view>
+				<navigator url="/pages/photo_size_info/photo_size_info?text=英国签证&size=35x45mm&pixel=413x531px&color=白">
+					<text>英国签证</text>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>
+
+<van-tabbar active=" {{active}}" bind:change="onChange" border="{{false}}">
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/首页.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/首页-选中.svg"></image>
+		<text wx:if="{{active != 0}}">首页</text>
+		<text wx:else class="active">首页</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/相册.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/相册-选中.svg"></image>
+
+		<text wx:if="{{active != 1}}">相册</text>
+		<text wx:else class="active">相册</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<view class="outer-circular">
+			<view class="inner-circular">
+				<view class="white-circular" bindtap="openCamera"></view>
+			</view>
+		</view>
+	</van-tabbar-item>
+
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/订单.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/订单-选中.svg"></image>
+		<text wx:if="{{active != 3}}">订单</text>
+		<text wx:else class="active">订单</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/个人中心.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/个人中心 选中.svg"></image>
+		<text wx:if="{{active != 4}}">我的</text>
+		<text wx:else class="active">我的</text>
+	</van-tabbar-item>
+
+</van-tabbar>

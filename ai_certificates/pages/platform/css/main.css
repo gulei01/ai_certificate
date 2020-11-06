@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+/* 清除input填充的黄色问题 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 60px #eee inset;
+    -webkit-text-fill-color: #878787;
+}
+
+input {
+    outline: 0px;
+    filter: none !important;
+}
+
+.main {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.left {
+    height: 100%;
+    /* width: 150px; */
+    width: 15%;
+    background-color: #7979F8;
+    position: absolute;
+}
+
+.left div {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.left div:first-child {
+    height: 70px;
+    pointer-events: none;
+}
+
+.left div img {
+    width: 20px;
+    height: 20px;
+}
+
+.left div:first-child img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.left div span {
+    line-height: 30px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+
+.left div:hover {
+    background-color: #6363f7;
+}
+
+.leftactive {
+    background-color: #6363f7;
+}
+
+.right {
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    left: 15%;
+    background-color: #f2f2f2;
+}
+
+.right .right-header {
+    height: 70px;
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+}
+
+.right .right-header span {
+    line-height: 70px;
+    position: absolute;
+    right: 20px;
+    color: #7979F8;
+    font-weight: 700;
+}
+
+.right .sale-value {
+    height: 88px;
+    width: 100%;
+    margin: 20px 0 20px 20px;
+    position: relative;
+}
+
+.right .sale-value .today,
+.right .sale-value .all {
+    height: 100%;
+    width: 250px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.right .sale-value .all {
+    left: 280px;
+}
+
+.right .sale-value .all div,
+.right .sale-value .today div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.today div:nth-child(1),
+.all div:nth-child(3),
+.all div:nth-child(1) {
+    color: gray
+}
+
+.today div:nth-child(2),
+.all div:nth-child(2) {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#graph {
+    height: 500px;
+    margin-left: 20px;
+    background-color: #fff;
+    width: 80%;
+}
+
+
+.order-list {
+    width: 80%;
+    min-height: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    position: relative;
+    margin-top: 30px;
+}
+
+.order-list-container {
+    margin: 20px;
+}
+
+.order-info div,
+.order-flex {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.order-info div span,
+.order-flex span {
+    flex: 1;
+}
+
+.order-info {
+    height: 50px;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.164);
+    line-height: 50px;
+}
+
+.order-flex span {
+    font-weight: 600;
+    font-size: large;
+}
+
+.order-detail {
+    min-width: 300px;
+    min-height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #7979F8;
+    padding: 20px;
+}
+
+.order-detail div {
+    margin-bottom: 10px;
+}
+
+.small-gray {
+    font-size: small;
+    color: gray;
+}
+
+.order-detail-item {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.order-detail-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.closeBtn {
+    text-align: center;
+    background-color: #7979F8;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: 10px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.closeBtn:active,
+.fenye span:active {
+    background-color: #6363f7;
+}
+
+.fenye {
+    float: right;
+    margin-right: 10%;
+}
+
+.fenye span {
+    border-radius: 6px;
+    outline: none;
+    padding: 10px 20px 10px 20px;
+    background-color: #7979F8;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.store-container {
+    width: 80%;
+    min-height: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+    margin-top: 40px;
+    padding-bottom: 50px;
+}
+
+.add {
+    cursor: pointer;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(128, 128, 128, 0.349);
+    border-radius: 5px;
+    padding: 7px 0 7px 0;
+}
+
+.add img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.add span {
+    font-size: small;
+    color: #7979F8;
+    font-weight: 700;
+}
+
+.store-info {
+    height: 80px;
+    margin: 20px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.349);
+    position: relative;
+}
+
+.store-info .store-logo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.store-info .store-info-detail {
+    position: absolute;
+    left: 60px;
+    height: 100%;
+    width: 900px;
+}
+
+.store-info .store-info-detail img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.edit-store-info {
+    z-index: 100;
+    cursor: pointer;
+    float: right;
+     /* top: 50%; */
+    transform: translateY(-100%); 
+    position: relative;
+    margin-right: 10px;
+    color: #7979F8;
+    font-weight: 700 !important;
+    /* font-size:  !important; */
+    font-size: medium !important;
+}
+
+.add-store {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    background-color: #fff;
+    position: relative;
+}
+
+.add-store form {
+    margin-left: 20%;
+    /* text-align: right; */
+}
+
+.add-store form div {
+    width: 500px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.add-store form span {
+    line-height: 60px;
+}
+
+.add-store form input {
+    height: 30px;
+    width: 300px;
+    border: 2px solid gainsboro;
+    padding: 5px;
+}
+
+.add-store form textarea {
+    height: 50px;
+    width: 300px;
+    border: 2px solid gainsboro;
+    padding: 5px;
+}
+
+.add-submit{
+    background-color: #7979F8;
+    height: 50px !important;
+    letter-spacing: 6px;
+    text-align: center;
+    color: #fff;
+    font-size: large;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 90px !important;
+}
+.add-submit:active{
+    background-color: #6363f7;
+}

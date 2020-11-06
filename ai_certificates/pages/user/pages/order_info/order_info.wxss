@@ -1,0 +1,43 @@
+/* pages/order_info/order_info.wxss */
+.page-bg {
+    background-color: #f2f2f2;
+    min-height: 100%;
+}
+
+.product {
+    height: 280px;
+    width: 100%;
+    position: relative;
+    background-color: #FFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.product-image {
+    width: 80%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.product-info {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.product-info image {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
+.product-info .text{
+    font-size: small;
+    color: gray;
+    
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="left">
+            <div>
+                <img src="../image/logo.jpg" alt="">
+            </div>
+            <div v-on:click="changeBar(0)" v-bind:class="{leftactive: active == 0}">
+                <img src="../image/工作台.svg" alt="">
+                <span>工作台面</span>
+            </div>
+            <div v-on:click="changeBar(1)" v-bind:class="{leftactive: active == 1}">
+                <img src="../image/订单.svg" alt="">
+                <span>订单管理</span>
+            </div>
+            <div v-on:click="changeBar(2)" v-bind:class="{leftactive: active == 2}">
+                <img src="../image/门店.svg" alt="">
+                <span>门店管理</span>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-header">
+                <span>chenxiaojian</span>
+            </div>
+            <div v-show="active === 0">
+                <div class="sale-value">
+                    <div class="today">
+                        <div>今日销售额</div>
+                        <div id='today'>12400</div>
+                    </div>
+                    <div class="all">
+                        <div>总销售额</div>
+                        <div id="total">123400</div>
+                        <div id="day">日均销售额：￥130</div>
+                    </div>
+                </div>
+                <div id="graph">
+                </div>
+            </div>
+            <div v-show="active === 1">
+                <div class="order-list">
+                    <div style="padding:20px">订单列表</div>
+                    <div class="order-list-container">
+                        <div class="order-flex">
+                            <span>订单号</span>
+                            <span>订单时间</span>
+                            <span>订单详情</span>
+                        </div>
+                        <div class="order-info" v-for="order in orderList">
+                            <div>
+                                <span>642848221e8e11eb9c901856805eff70</span>
+                                <span>2020年09月10日12:12:12</span>
+                                <span style="color: #7979F8;font-weight: 700;cursor: pointer;" v-on:click="showOrder" >查看</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="fenye">
+                        <span>上一页</span>
+                        <span>下一页</span>
+                    </div>
+                </div>
+                <!-- 订单详情 -->
+                <div class="order-detail" v-if="showOrderDetail">
+                    <div class="order-detail-item">
+                        <span>订单编号&nbsp;&nbsp;</span>
+                        <span class="small-gray">642848221e8e11eb9c901856805eff70</span>
+                    </div>
+                    <div class="order-detail-item">
+                        <span>订单类型&nbsp;&nbsp;</span>
+                        <span class="small-gray" v-if="type==2">高清电子照</span>
+                        <span class="small-gray" v-if="type==1">门店打印</span>
+                        <span class="small-gray" v-if="type==3">快递收货</span>
+                    </div>
+                    <div class="order-detail-item">
+                        <span>订单金额&nbsp;&nbsp;</span>
+                        <span class="small-gray">￥300.00</span>
+                    </div>
+                    <!-- 门店信息 -->
+                    <div v-if="type==1">
+                        <div class="order-detail-item">
+                            <img src="../image/加盟店-门店名称.svg">
+                            <span class="small-gray">啦啦啦打印店</span>
+                        </div>
+                        <div class="order-detail-item">
+                            <img src="../image/收货人.svg">
+                            <span class="small-gray">chenxiaojian</span>
+                        </div>
+                        <div class="order-detail-item">
+                            <img src="../image/手机.svg">
+                            <span class="small-gray">15013225799</span>
+                        </div>
+                        <div class="order-detail-item">
+                            <img src="../image/收货地址.svg">
+                            <span class="small-gray">广东省广州市番禺区广州大学城广州大学B25-614</span>
+                        </div>
+                    </div>
+                    <!-- 收货地址 -->
+                    <div v-if="type==3">
+                        <div class="order-detail-item">
+                            <img src="../image/收货人.svg">
+                            <span class="small-gray">chenxiaojian</span>
+                        </div>
+                        <div class="order-detail-item">
+                            <img src="../image/手机.svg">
+                            <span class="small-gray">15013225799</span>
+                        </div>
+                        <div class="order-detail-item">
+                            <img src="../image/收货地址.svg">
+                            <span class="small-gray">广东省广州市番禺区广州大学城广州大学B25-614</span>
+                        </div>
+                    </div>
+
+                    <!-- 商品详情 -->
+                    <div v-for="item in order_data">
+                        <div style="height: 50px;position: relative;font-size: small;color: gray;">
+                            <img src="../image/logo.jpg" alt=""
+                                style="width: 40px;height: 40px;position: absolute;top: 50%;transform: translateY(-50%);">
+                            <span style="position: absolute;left: 50px;line-height: 25px;">蓝色</span>
+                            <span style="position: absolute;left: 50px;line-height: 25px;top:25px">大一寸</span>
+                            <span
+                                style="position: absolute;margin-left: 120px;line-height: 25px;left: 50px;">3张/￥10.0</span>
+                            <span
+                                style="position: absolute;margin-left: 120px;line-height: 25px;top:25px;left: 50px;">200x100px</span>
+                        </div>
+                    </div>
+                    <div class="closeBtn" v-on:click="closeOtherInfo">关闭</div>
+                </div>
+            </div>
+            <div v-show="active === 2">
+                <div class="store-container small-gray" v-if="store_active == 0">
+                    <div style="padding:20px">门店列表</div>
+                    <div class="add" v-on:click="edit">
+                        <img src="../image/添加.svg">
+                        <span>添加</span>
+                    </div>
+                    <div v-for="item in storeList">
+                        <div class="store-info">
+                            <img src="../image/logo.jpg" alt="" class="store-logo">
+                            <div class="store-info-detail">
+                                <div style="display: flex;height: 40px;align-items: center;">
+                                    <div style="flex: 1;display: flex;align-items: center;">
+                                        <img src="../image/收货人.svg" alt="">
+                                        <span>{{item.store_contact_name}}</span>
+                                    </div>
+                                    <div style="flex: 1;display: flex;align-items: center;">
+                                        <img src="../image/手机.svg" alt="">
+                                        <span>{{item.store_contact_phone}}</span>
+                                    </div>
+                                    <div style="flex: 1;display: flex;align-items: center;">
+                                        <img src="../image/加盟店-门店名称.svg" alt="">
+                                        <span>{{item.store_name}}</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex;align-items: center;">
+                                    <img src="../image/收货地址.svg" alt="">
+                                    <span>{{item.store_address}}</span>
+                                </div>
+                                <span class="edit-store-info"  :data-id="item.store_id" v-on:click="edit(item.store_id)">编辑</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="fenye">
+                        <span>上一页</span>
+                        <span>下一页</span>
+                    </div>
+                </div>
+                <!-- 修改。新增门店 -->
+                <div class="add-store" v-show="store_active != 0">
+                    <div style="padding: 20px;">{{store_operate_text}}</div>
+                    <form action="">
+                        <div>
+                            <span>名称：</span>
+                            <input type="text" name="" value="" id="store_name" placeholder="请输入门店名称" >
+                        </div>
+                        <div style="line-height: 60px;">
+                            <span>地址：</span>
+                            <textarea name="" id="store_address" value="" cols="30" rows="10" placeholder="请输入门店地址" ></textarea>
+                        </div>
+                        <div>
+                            <span>联系人：</span>
+                            <input type="text" name="" id="store_contact_name" placeholder="请输入门店联系人">
+                        </div>
+                        <div>
+                            <span>联系电话：</span>
+                            <input type="text" name="" id="store_contact_phone" placeholder="请输入门店联系电话" >
+                        </div>
+                        <div>
+                            <span>登录手机号：</span>
+                            <input type="text" name="" id="user_phone" placeholder="请输入手机登录账号">
+                        </div>
+                        <div>
+                            <span>登录密码：</span>
+                            <input type="text" name="" id="user_password" placeholder="请输入手机登录密码">
+                        </div>
+                        <div>
+                            <input type="submit" value="确定" class="add-submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+/* pages/addressInfo/addressInfo.wxss */
+.van-field__body--textarea textarea{ /*修改textarea的高度*/
+    height: 50px !important;
+}

@@ -1,0 +1,276 @@
+<!--pages/cut_photo/cut_photo.wxml-->
+
+<view style="min-height:100%;height:100%;background-color: #f2f2f2;">
+	<van-notice-bar color="#7979f8" left-icon="info-o" text="建议替换背景操作在美颜，更换服装之后...=-=，此外，图片导入进来，默认就是变成蓝底...=-=" />
+	<!--  -->
+	<view class="loading" wx:if="{{if_loading}}">
+		<view style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+			<van-loading type="spinner" color="#fff" vertical text-size="30px" />
+			<view>加载中...</view>
+		</view>
+	</view>
+
+	<!--  -->
+	<view class="image">
+		<image src="{{processingPhoto}}"></image>
+	</view>
+	<view class="btn-contain" wx:if="{{btn_active == 0}}">
+
+		<view bindtap="changeBtnActive" data-btn_active="{{1}}">
+			<view>
+				<image src="../../static/image/app剪切图片/美颜.svg"></image>
+			</view>
+			<view>美颜</view>
+		</view>
+		<view bindtap="changeBtnActive" data-btn_active="{{2}}">
+			<view>
+				<image src="../../static/image/app剪切图片/服装.svg"></image>
+			</view>
+			<view>服装</view>
+		</view>
+		<view bindtap="changeBtnActive" data-btn_active="{{3}}">
+			<view>
+				<image src="../../static/image/app剪切图片/背景.svg"></image>
+			</view>
+			<view>背景</view>
+		</view>
+	</view>
+	<!-- 美颜 -->
+	<view wx:if="{{btn_active == 1}}" class="beautify">
+		<view class="slider-value" wx:if="{{showSliderValue}}">{{slider_value}}</view>
+		<view style="width:80%; margin:0 auto;margin-top:15px;margin-bottom:25px">
+			<van-slider value="{{slider_value}}" bar-height="4px" active-color="#ee0a24" active-color="#9d9df0" bind:drag="onDrag" bind:drag-start="dragStart" bind:change="dragEnd" />
+		</view>
+		<view class="button-contain">
+			<view bindtap="beautifyChange" data-active="{{0}}">
+				<view>
+					<image src="../../static/image/app剪切图片/美白.svg" wx:if="{{active != 0}}" style="border: 1px solid #8a8a8a;"></image>
+					<image wx:if="{{active == 0}}" src="../../static/image/app剪切图片/美白选中.svg" style="background-color:rgba(98, 98, 226, 0.85)">
+					</image>
+				</view>
+				<view style="margin-top:5px">
+					<text>美白</text>
+				</view>
+			</view>
+			<view bindtap="beautifyChange" data-active="{{1}}">
+				<view>
+					<image src="../../static/image/app剪切图片/瘦脸.svg" wx:if="{{active != 1}}" style="border: 1px solid #8a8a8a;"></image>
+					<image wx:if="{{active == 1}}" src="../../static/image/app剪切图片/瘦脸选中.svg" style="background-color:rgba(98, 98, 226, 0.85)"></image>
+				</view>
+				<view>
+					<text>瘦脸</text>
+				</view>
+			</view>
+			<view bindtap="beautifyChange" data-active="{{2}}">
+				<view>
+					<image src="../../static/image/app剪切图片/磨皮.svg" wx:if="{{active != 2}}" style="border: 1px solid #8a8a8a;"></image>
+					<image wx:if="{{active == 2}}" style="background-color:rgba(98, 98, 226, 0.85)" src="../../static/image/app剪切图片/磨皮选中.svg"></image>
+				</view>
+				<view>
+					<text>磨皮</text>
+				</view>
+			</view>
+			<view bindtap="beautifyChange" data-active="{{3}}">
+				<view>
+					<image src="../../static/image/app剪切图片/大眼.svg" wx:if="{{active != 3}}" style="border: 1px solid #8a8a8a;"></image>
+					<image wx:if="{{active == 3}}" style="background-color:rgba(98, 98, 226, 0.85)" src="../../static/image/app剪切图片/大眼选中.svg"></image>
+				</view>
+				<view>
+					<text>大眼</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{btn_active == 2}}" class="clothes">
+		<view class="clothes-header" bindtap="setClothesActive">
+			<text wx:if="{{clo_active != 0}}" data-clothes="{{0}}">男装</text>
+			<text style="background-color: #7979f8;color: #fff;" wx:if="{{clo_active == 0}}" data-clothes="{{0}}">男装</text>
+			<text wx:if="{{clo_active != 1}}" data-clothes="{{1}}">女装</text>
+			<text style="background-color: #7979f8;color: #fff;" wx:if="{{clo_active==1}}" data-clothes="{{1}}">女装</text>
+		</view>
+		<view wx:if="{{clo_active == 0}}">
+			<scroll-view scroll-x="true" style="margin:5px;width:100%;white-space: nowrap;">
+				<view class="scroll-item" data-type="0" bindtap="chooseClothes">
+					<image src="../../static/image/app剪切图片/禁止.svg"></image>
+					<text>无</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy1" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy1%403x.png"></image>
+					<text>男装001</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy2" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy2%403x.png"></image>
+					<text>男装002</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy3" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy3%403x.png"></image>
+					<text>男装003</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy4" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy4%403x.png"></image>
+					<text>男装004</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy5" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy5%403x.png"></image>
+					<text>男装005</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy6" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy6%403x.png"></image>
+					<text>男装006</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy7" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy7%403x.png"></image>
+					<text>男装007</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy8" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy8%403x.png"></image>
+					<text>男装008</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy9" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy9%403x.png"></image>
+					<text>男装009</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy10" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy10%403x.png"></image>
+					<text>男装010</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy11" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy11%403x.png"></image>
+					<text>男装011</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy12" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy12%403x.png"></image>
+					<text>男装012</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy13" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy13%403x.png"></image>
+					<text>男装013</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy14" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy14%403x.png"></image>
+					<text>男装014</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy15" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy15%403x.png"></image>
+					<text>男装015</text>
+				</view>
+				<view class="scroll-item" data-type="applet_boy16" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_boy16%403x.png"></image>
+					<text>男装016</text>
+				</view>
+			</scroll-view>
+		</view>
+		<view wx:if="{{clo_active == 1}}">
+			<scroll-view scroll-x="true" style="margin:5px;width:100%;white-space: nowrap;">
+				<view class="scroll-item" data-type="0" bindtap="chooseClothes">
+					<image src="../../static/image/app剪切图片/禁止.svg"></image>
+					<text>无</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl1" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl1%403x.png"></image>
+					<text>女装001</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl2" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl2%403x.png"></image>
+					<text>女装002</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl3" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl3%403x.png"></image>
+					<text>女装003</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl4" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl4%403x.png"></image>
+					<text>女装004</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl5" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl5%403x.png"></image>
+					<text>女装005</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl6" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl6%403x.png"></image>
+					<text>女装006</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl7" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl7%403x.png"></image>
+					<text>女装007</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl8" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl8%403x.png"></image>
+					<text>女装008</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl9" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl9%403x.png"></image>
+					<text>女装009</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl10" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl10%403x.png"></image>
+					<text>女装010</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl11" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl11%403x.png"></image>
+					<text>女装011</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl12" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl12%403x.png"></image>
+					<text>女装012</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl13" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl13%403x.png"></image>
+					<text>女装013</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl4" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl14%403x.png"></image>
+					<text>女装014</text>
+				</view>
+				<view class="scroll-item" data-type="applet_girl15" bindtap="chooseClothes">
+					<image src="https://leqi-public.oss-cn-shanghai.aliyuncs.com/wechat_applet/clothes/applet_girl15%403x.png"></image>
+					<text>女装015</text>
+				</view>
+
+			</scroll-view>
+		</view>
+	</view>
+	<!-- 背景处理 -->
+	<view wx:if="{{btn_active == 3}}" class="choosebg">
+		<view style="flex:1">
+			<view bindtap="choosebg" data-bg_active="{{0}}">
+				<image src="../../static/image/app剪切图片/禁止.svg" wx:if="{{bg_active != 0}}"></image>
+				<image wx:if="{{bg_active == 0}}" src="../../static/image/app剪切图片/禁止.svg" style="padding:10px;border:1px solid #7979F8;border-radius: 50%;"></image>
+			</view>
+			<view>无色</view>
+		</view>
+		<view style="flex:1">
+			<view bindtap="choosebg" data-bg_active="{{1}}">
+				<image src="../../static/image/app剪切图片/white.svg" wx:if="{{bg_active != 1}}"></image>
+				<image wx:if="{{bg_active == 1}}" src="../../static/image/app剪切图片/white.svg" style="padding:10px;border:1px solid #7979F8;border-radius: 50%;"></image>
+			</view>
+			<view>白色</view>
+		</view>
+		<view style="flex:1">
+			<view bindtap="choosebg" data-bg_active="{{2}}">
+				<image src="../../static/image/app剪切图片/blue.svg" wx:if="{{bg_active!=2}}"></image>
+				<image wx:if="{{bg_active == 2}}" src="../../static/image/app剪切图片/blue.svg" style="padding:10px;border:1px solid #7979F8;border-radius: 50%;"></image>
+			</view>
+			<view>蓝色</view>
+		</view>
+		<view style="flex:1">
+			<view bindtap="choosebg" data-bg_active="{{3}}">
+				<image src="../../static/image/app剪切图片/red.svg" wx:if="{{bg_active!=3}}"></image>
+				<image wx:if="{{bg_active == 3}}" src="../../static/image/app剪切图片/red.svg" style="padding:10px;border:1px solid #7979F8;border-radius: 50%;"></image>
+			</view>
+			<view>红色</view>
+		</view>
+	</view>
+	<!-- × √按钮 -->
+	<view style="width:80%;margin:0 auto;height:40px;" wx:if="{{btn_active != 0}}">
+		<image src="../../static/image/app剪切图片/叉号.svg" style="width:30px; height:40px;float:left" bindtap="close"></image>
+		<image src="../../static/image/app剪切图片/勾选.svg" style="width:30px; height:40px;float:right" bindtap="save"></image>
+	</view>
+	<view class="confirm" bindtap="confirm">
+		确认
+	</view>
+	<view style="width:100%;height:20px; "></view>
+
+
+	<!-- <view style="width:100%; height:40px;"></view> -->
+</view>

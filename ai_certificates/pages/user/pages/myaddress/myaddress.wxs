@@ -1,0 +1,4 @@
+var navigator_data = function(item){
+    return encodeURIComponent(JSON.stringify(item))
+}
+module.exports.navigator_data = navigator_data;

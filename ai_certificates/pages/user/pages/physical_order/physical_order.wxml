@@ -1,0 +1,83 @@
+<view style="width:100%;background-color:#f2f2f2; overflow-x: hidden;">
+	<view class="accept-type" bindtap="choose_accept_type">
+		<view wx:if="{{order_type !=1}}" data-order_type="{{1}}">门店自取</view>
+		<view wx:if="{{order_type == 1}}" data-order_type="{{1}}" style="background-color:#7979f8;color:#fff">门店自取</view>
+		<view wx:if="{{order_type !=3}}" data-order_type="{{3}}">快递收货</view>
+		<view wx:if="{{order_type == 3}}" data-order_type="{{3}}" style="background-color:#7979f8;color:#fff">快递收货</view>
+	</view>
+	<!-- 收货地址 -->
+	<view class="address-info" bindtap="chooseAddress" wx:if="{{order_type == 3}}">
+		<view wx:if="{{address_info != ''}}">
+			<view class="address-detail">{{accept_address}}</view>
+			<view style="color: gray; font-size:small;">
+				<text style="margin-right:10px">{{accept_user}}</text>
+				<text>{{accept_phone}}</text>
+			</view>
+		</view>
+		<view wx:if="{{address_info == ''}}" style="font-weight:600">请选择收货地址...</view>
+		<image src="../../static/image/app我的/返 回.svg"></image>
+	</view>
+	<view class="store-info" wx:if="{{order_type == 1}}" bindtap="showStoreList">
+		<view wx:if="{{store_info == ''}}" style="font-weight:600">请选择线下门店...</view>
+		<view wx:if="{{store_info != ''}}">
+			<view class="store-detail">
+				<text style="margin-right:10px; font-size:large;color:#7979F8;">{{store_info.store_name}}:</text>
+				<text>{{store_info.store_address}}</text>
+			</view>
+			<view style="width:80%; font-size:small; color:gray">
+				<text style="margin-right:15px">{{store_info.store_contact_name}}</text>
+				<text>{{store_info.store_contact_phone}}</text>
+			</view>
+		</view>
+		<image src="../../static/image/app我的/返 回.svg" style="transform: translateY(-50%) rotate(90deg);"></image>
+	</view>
+	<!-- 门店列表 -->
+	<van-popup show="{{ showStoreList }}" position="bottom" custom-style="height: 60%; background-color:#f2f2f2;" bind:close="closeStoreList">
+		<view>
+			<view wx:for="{{storeList}}" style="background-color: #fff;margin-bottom:10px">
+				<view bindtap="chooseStore" class="popup-store-detail" data-index="{{index}}">
+					<view>
+						<image src="../../static/image/app订单详情/加盟店-门店名称.svg"></image>
+						<text class="small">{{item.store_name}}</text>
+					</view>
+					<view>
+						<image src="../../static/image/app订单详情/收货人.svg"></image>
+						<text class="small">{{item.store_contact_name}}</text>
+					</view>
+					<view>
+						<image src="../../static/image/app订单详情/手机.svg"></image>
+						<text class="small">{{item.store_contact_phone}}</text>
+					</view>
+					<view style="height:70px">
+						<image src="../../static/image/app订单详情/收货地址.svg"></image>
+						<text class="small">{{item.store_address}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+
+	</van-popup>
+	<view class="more-size">
+		<view bindtap="chooseMoreSize">
+			<image src="../../static/image/添加.svg" style="width:30px;height:30px"></image>
+			<text>更多尺寸</text>
+		</view>
+	</view>
+	<view wx:for="{{select_spec_list}}">
+		<view class="select-spec">
+			<image src="{{item.img_url}}"></image>
+			<view class="select-spec-info">
+				<view style="color:gray">
+					<text>{{item.spec_text}}</text>
+					<text style="font-size:small">{{" (" +item.spec_pixel + ")"}}</text>
+				</view>
+				<view style="font-size:small; font-weight:700">￥15.00</view>
+			</view>
+			<view style="position: absolute;right: 10px;top: 50%;transform: translateY(-50%);">
+				<van-stepper value="{{ 1 }}" bind:change="changeSpecSize" data-index="{{index}}" min="1"/>
+			</view>
+		</view>
+	</view>
+	<view style="width:100%;height:75px"></view>
+	<van-submit-bar price="{{ all_price }}" button-text="生成订单" bind:submit="onSubmit"  />
+</view>

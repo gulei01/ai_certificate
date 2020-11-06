@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 清除input填充的黄色问题 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 60px #eee inset;
+    -webkit-text-fill-color: #878787;
+}
+
+input {
+    outline: 0px;
+    filter: none !important;
+}
+
+.content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+}
+
+.content img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.content form .input {
+    position: relative;
+    width: 150px;
+    height: 50px;
+    transition: 1s;
+}
+
+.input div {
+    width: 100%;
+    height: 100%;
+}
+
+.input div input {
+    width: 150px;
+    border: none;
+    border-bottom: 1px solid #7979F8;
+    margin-bottom: 30px;
+    outline: none;
+    box-shadow: none;
+}
+
+.input div::after {
+    content: attr(placeholder);
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+
+}
+
+.focus::after {
+    /* color: #7979F8; */
+    top: -1.3rem;
+}
+
+.content form div button {
+    border: none;
+    width: 150px;
+    height: 25px;
+    letter-spacing: 5px;
+    background-color: #7979F8;
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.content form button:hover {
+    background-color: #8787f0;
+}

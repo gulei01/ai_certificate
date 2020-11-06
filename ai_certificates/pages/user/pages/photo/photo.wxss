@@ -1,0 +1,75 @@
+/* pages/photo.wxss */
+.page-bg {
+    height: 100%;
+    width: 100%;
+    background-color: #F2F2F2;
+}
+
+.page-header {
+    height: 64px;
+    position: relative;
+    background-color: #fff;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 64px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-right-title {
+    font-size: 13px;
+    font-weight: 700;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.page-content {
+    width: 100%;
+    height: 70%;
+}
+
+.page-content .lunbo {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.lunboImage {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.button {
+    box-shadow: 1px 1px 1px 1px #7979f86e;
+    color: #fff;
+    background-color: #7979F8;
+    margin: 5px !important;
+    margin-top: 20px !important;
+}
+
+.button:active {
+    background-color: #7979f896;
+    transform: translate();
+}
+
+.page-nophoto {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    width: 100%;
+    height: 100%;
+
+}

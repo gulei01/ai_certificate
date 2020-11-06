@@ -1,0 +1,23 @@
+<view style="height:100%; width:100%; background-color:#f2f2f2">
+	<view class="order-info">
+		<view style="display:inline-block; height:100%; width:35%;">
+			<image src="{{img_url}}"></image>
+		</view>
+		<view class="order-detail">
+			<view style="flex:1; display:flex; align-items:center">规格：<text style="font-size:small; color: #7979f8">{{spec_text}}</text></view>
+			<view style="flex:1; display:flex; align-items:center">背景：<text style="font-size:small; color: #7979f8">{{bgcolor}}</text></view>
+			<view style="flex:1; display:flex; align-items:center">尺寸：<text style="font-size:small; color: #7979f8">{{pixel}}</text></view>
+		</view>
+	</view>
+	<view class="order-price">
+		<view style="margin:0 15px 0 15px;position:relative; top:10px;">
+			<view style="font-size:small; color:gray;margin-bottom:5px">商品详情</view>
+			<view>
+				<text style="float:left;">高清电子照片</text>
+				<text style="float:right;font-weight:700;font-size:large;color:#7979f8">￥{{price/100}}</text>
+			</view>
+		</view>
+	</view>
+	<van-submit-bar price="{{ price }}" button-text="生成订单" bind:submit="onSubmit" disabled="{{submit_disabled}}"/>
+	<van-action-sheet show="{{ show }}" actions="{{ actions }}" cancel-text="取消" bind:cancel="close" bind:select="purchase" />
+</view>

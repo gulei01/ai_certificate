@@ -1,0 +1,64 @@
+<view class="page-bg">
+	<view class="page-header">
+		<view class="page-title">证件照相册</view>
+		<view class="page-right-title" bindtap="chooseImage">系统相册</view>
+	</view>
+	<view class="page-content" wx:if="{{cart_list.length >0}}">
+		<swiper class="lunbo" bindchange="getCurrentIndex" current="{{current}}" indicator-dots="true">
+			<block wx:for="{{cart_list}}">
+				<swiper-item>
+					<image class="lunboImage" src="{{item.img_url}}"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+		<view style="width:80%;margin:0 auto; position:relative">
+			<text style="font-size:large; font-weight:700;">{{current+1}}</text>
+			<text style="font-weight:500; color:gray;">/{{cart_list.length}}张</text>
+			<image src="/static/image/app相册/清除.svg" style="width:20px; height:20px; position:absolute;right:0" bindtap="deleteImg"></image>
+		</view>
+		<view style="width:80%; margin:0 auto; display:flex">
+			<button class="button" bindtap="export_digital">导出高清照</button>
+			<button class="button" bindtap="print_quick">立即打印</button>
+		</view>
+	</view>
+	<view wx:else class="page-content">
+		<image src="/static/image/app相册/无相册.png" class="page-nophoto"></image>
+	</view>
+</view>
+
+<van-tabbar active="{{active}}" bind:change="onChange" border="{{false}}">
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/首页.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/首页-选中.svg"></image>
+		<text wx:if="{{active != 0}}">首页</text>
+		<text wx:else class="active">首页</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/相册.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/相册-选中.svg"></image>
+
+		<text wx:if="{{active != 1}}">相册</text>
+		<text wx:else class="active">相册</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<view class="outer-circular">
+			<view class="inner-circular">
+				<view class="white-circular" bindtap="openCamera"></view>
+			</view>
+		</view>
+	</van-tabbar-item>
+
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/订单.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/订单-选中.svg"></image>
+		<text wx:if="{{active != 3}}">订单</text>
+		<text wx:else class="active">订单</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/个人中心.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/个人中心 选中.svg"></image>
+		<text wx:if="{{active != 4}}">我的</text>
+		<text wx:else class="active">我的</text>
+	</van-tabbar-item>
+
+</van-tabbar>

@@ -1,0 +1,75 @@
+<view class="page-bg">
+	<van-toast id="van-toast" mask="true"  />		<!--消息提示-->
+	<view class="page-header">个人中心</view>
+	<view class="page-content">
+		<view class="page-content-header">
+			<button wx:if="{{ token == '' }}" class="position-center" bindtap="login">注册/登录</button>
+			<view wx:else style="heigth:100%; width:80%; margin:0 auto">
+				<view class="user-logo">
+					<image src="{{userLogo}}"></image>
+				</view>
+				<view class="user-info" bindtap="showMyInfo">
+					<view style="font-weight:600;color:#7979F8; font-size:18px;width:200px;height:24px; white-space: nowrap;text-overflow: ellipsis;overflow:hidden">{{userName}}</view>
+					<view style="font-size:10px; color:gray">手机账号：{{userPhone}}</view>
+				</view>
+			</view>
+
+		</view>
+		<view class="page-content-body">
+			<view bindtap="showMyInfo">
+				<text>个人资料修改</text>
+				<image src="/static/image/app我的/返 回.svg"></image>
+			</view>
+			<view>
+				<text>帮助中心</text>
+				<image src="/static/image/app我的/返 回.svg"></image>
+			</view>
+			<view>
+				<text>关于作者</text>
+				<image src="/static/image/app我的/返 回.svg"></image>
+			</view>
+			<view>
+				<text>联系作者</text>
+				<image src="/static/image/app我的/返 回.svg"></image>
+			</view>
+
+		</view>
+	</view>
+</view>
+
+<van-tabbar active="{{active}}" bind:change="onChange" border="{{false}}">
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/首页.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/首页-选中.svg"></image>
+		<text wx:if="{{active != 0}}">首页</text>
+		<text wx:else class="active">首页</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/相册.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/相册-选中.svg"></image>
+
+		<text wx:if="{{active != 1}}">相册</text>
+		<text wx:else class="active">相册</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<view class="outer-circular">
+			<view class="inner-circular">
+				<view class="white-circular" bindtap="openCamera"></view>
+			</view>
+		</view>
+	</van-tabbar-item>
+
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/订单.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/订单-选中.svg"></image>
+		<text wx:if="{{active != 3}}">订单</text>
+		<text wx:else class="active">订单</text>
+	</van-tabbar-item>
+	<van-tabbar-item>
+		<image slot="icon" src="/static/image/app导航/个人中心.svg"></image>
+		<image slot="icon-active" src="/static/image/app导航/个人中心 选中.svg"></image>
+		<text wx:if="{{active != 4}}">我的</text>
+		<text wx:else class="active">我的</text>
+	</van-tabbar-item>
+
+</van-tabbar>

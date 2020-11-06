@@ -1,0 +1,38 @@
+<view class="page-bg">
+	<view class="lunbo">
+		<swiper style="height:100%; width:70%; margin:0 auto" autoplay="true" interval="3500" duration="1000" indicator-dots="true">
+			<block wx:for="{{lunboData}}">
+				<swiper-item>
+					<image src="{{item.imgUrl}}" style="width:80%; position:relative; left:50%; transform:translateX(-50%)"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="size-info">
+		<view style="margin:10px; font-weight:600; font-size: 17px;">照片规格说明</view>
+		<view style="margin-left:10px;">
+			<view style="line-height:30px">
+				<text>冲印尺寸：</text>
+				<text class="info-data">{{size}}</text>
+			</view>
+			<view style="line-height:30px">
+				<text>像素尺寸：</text>
+				<text class="info-data">{{pixel}}</text>
+			</view>
+			<view style="line-height:30px">
+				<text>背景颜色：</text>
+				<text class="info-data">{{color}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="btn-container">
+		<view style="background-color:#fff; border:2px solid #7979F8" bindtap="chooseImg" data-type="album">
+			<image src="../../static/image/相册.svg"></image>
+			<text style="color:#7979F8" >相册导入</text>
+		</view>
+		<view style="background-color:#7979F8" bindtap="chooseImg" data-type="camera">
+			<image src="../../static/image/相机.svg"></image>
+			<text style="color:#fff">立即制作</text>
+		</view>
+	</view>
+</view>

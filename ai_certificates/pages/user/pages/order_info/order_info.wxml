@@ -1,0 +1,102 @@
+<view class="page-bg">
+	<view wx:for="{{order_item}}">
+		<view class="product">
+			<view style="width:45%;height:100%;display:inline-block">
+				<image src="{{item.order_wm_photo}}" class="product-image"></image>
+			</view>
+			<view style="width:55%;height:100%;display:inline-block;position:absolute;left:45%">
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/商品.svg"></image>
+					<text>商品信息</text>
+				</view>
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/类型.svg"></image>
+					<text>图片类型：</text>
+					<text class="text">{{item.order_photo_type}}</text>
+				</view>
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/尺寸.svg"></image>
+					<text>图片尺寸：</text>
+					<text class="text">{{item.order_photo_size}}</text>
+				</view>
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/颜色.svg"></image>
+					<text>背景颜色：</text>
+					<text class="text">{{item.order_photo_bgcolor}}</text>
+				</view>
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/单价.svg"></image>
+					<text>商品单价：</text>
+					<text class="text">{{item.order_photo_price / 100}}</text>
+				</view>
+				<view class="product-info">
+					<image src="../../static/image/app订单详情/商品数量.svg"></image>
+					<text>商品数量：</text>
+					<text class="text">{{item.order_photo_num}}</text>
+				</view>
+
+			</view>
+		</view>
+	</view>
+	<view style="width:100%; height:80px;background-color:#fff;">
+		<view style="font-size:13px; color:gray; margin:10px; position:relative;">商品详情</view>
+		<view style="font-weight:600; margin-left:10px;color:#7979F8" wx:if="{{order_info.order_type == 2}}">高清电子照</view>
+		<view style="font-weight:600; margin-left:10px;color:#7979F8" wx:if="{{order_info.order_type != 2}}">事物打印</view>
+		<view style="float:right; margin-right:10px;">
+			合计：<text style="color:#7979F8; font-weight:600; font-size:large;" >￥{{order_info.order_money / 100}}</text>
+		</view>
+	</view>
+	<view style="width:100%; heigth:90px; background-color:#fff;margin-top:10px">
+		<view style="margin:0 10px 0 10px">
+			<text style="font-size:13px; color:gray;">下单时间</text>
+			<text style="float:right;font-size:small;">{{order_info.create_at}}</text>
+		</view>
+		<view style="margin:0 10px 0 10px">
+			<text style="font-size:13px; color:gray;">订单编号</text>
+			<text style="float:right;font-size:small;">{{order_info.order_id}}</text>
+		</view>
+	</view>
+	<view style="width:100%; background-color:#fff;margin-top:10px" wx:if="{{order_info.order_type == 3}}">
+		<view style="margin-left:10px;color:gray;font-size:13px;">快递收货</view>
+		<view style="margin-left:10px;height:40px;display:flex;align-items: center;font-size:small">
+			<image src="../../static/image/app订单详情/收货人.svg" style="width:20px;height:20px;"></image>
+			<text style="position: relative;left: 10px;">{{order_info.order_accept_name}}</text>
+		</view>
+		<view style="margin-left:10px;height:40px;display:flex;align-items: center;font-size:small">
+			<image src="../../static/image/app订单详情/手机.svg" style="width:20px;height:20px"></image>
+			<text style="position: relative;left: 10px;">{{order_info.order_accept_phone}}</text>
+		</view>
+		<view style="margin:0 10px 0 10px;height:70px;display:flex; align-items:center;font-size:small">
+			<image src="../../static/image/app订单详情/收货地址.svg" style="width:20px;height:20px"></image>
+			<text style="margin:0 10px 0 10px;">{{order_info.order_accept_address}}</text>
+		</view>
+	</view>
+
+	<view style="width:100%; background-color:#fff;margin-top:10px" wx:if="{{order_info.order_type == 1}}">
+
+		<view style="margin-left:10px;color:gray;font-size:13px;">门店打印</view>
+		<view style="margin-left:10px;height:40px;display:flex;align-items: center;font-size:small">
+			<image src="../../static/image/app订单详情/收货人.svg" style="width:20px;height:20px;"></image>
+			<text style="position: relative;left: 10px;">{{order_info.store_contact_name}}</text>
+		</view>
+		<view style="margin-left:10px;height:40px;display:flex;align-items: center;font-size:small">
+			<image src="../../static/image/app订单详情/手机.svg" style="width:20px;height:20px"></image>
+			<text style="position: relative;left: 10px;">{{order_info.store_contact_phone}}</text>
+		</view>
+		<view style="margin-left:10px;height:40px;display:flex;align-items: center;font-size:small">
+			<image src="../../static/image/app订单详情/加盟店-门店名称.svg" style="width:20px;height:20px"></image>
+			<text style="position: relative;left: 10px;">{{order_info.store_name}}</text>
+		</view>
+
+		<view style="margin:0 10px 0 10px;height:70px;display:flex; align-items:center;font-size:small">
+			<image src="../../static/image/app订单详情/收货地址.svg" style="width:20px;height:20px"></image>
+			<text style="margin:0 10px 0 10px;">{{order_info.store_address}}</text>
+		</view>
+	</view>
+
+	<button style="width:100%; margin-top:10px; background-color:#7979F8; color:#fff" wx:if="{{order_info.order_status == 0}}" bindtap="payoff">未支付</button>
+	<button style="width:100%; margin-top:10px; background-color:#7979F8; color:#fff" wx:if="{{order_info.order_status == 1}}" bindtap="one_more">再来一单</button>
+
+	<!-- 留白 -->
+	<view style="width:100%;height:50px;"></view>
+</view>

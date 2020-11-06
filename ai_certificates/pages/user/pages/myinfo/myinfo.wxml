@@ -1,0 +1,34 @@
+<view class="page-bg">
+	<view class="user-logo-container">
+		<image src="{{userLogo}}" class="user_logo" bindtap="chooseImg"></image>
+		<text>点击头像进行更换</text>
+	</view>
+	<view class="page-content">
+		<van-toast id="van-toast" mask="true" />
+		<!--消息提示-->
+		<view bindtap="showUserPhone">
+			<text style="color:gray">手机账号</text>
+			<text class="center-small" >{{userPhone}}</text>
+		</view>
+		<view bindtap="showPopup">
+			<text style="color:gray">用户昵称</text>
+			<text class="center-small">{{userName}}</text>
+			<image src="/static/image/app我的/返 回.svg"></image>
+		</view>
+
+		<view bindtap="showMyAddress">
+			<text style="color:gray">收货地址</text>
+			<image src="/static/image/app我的/返 回.svg"></image>
+		</view>
+		<view bindtap="modUserPassword">
+			<text style="color:gray">修改密码</text>
+			<image src="/static/image/app我的/返 回.svg"></image>
+		</view>
+	</view>
+	<!-- 设置用户昵称 -->
+	<van-popup show="{{ show }}" position="bottom" bind:close="onClose">
+		<van-field label="用户昵称" placeholder="请输入用户昵称" clearable use-button-slot maxlength="20" model:value="{{modUserName}}">
+			<van-button slot="button" type="small" bindtap="modUserName">确定</van-button>
+		</van-field>
+	</van-popup>
+</view>

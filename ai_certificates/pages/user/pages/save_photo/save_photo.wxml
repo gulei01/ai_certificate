@@ -1,0 +1,16 @@
+<view style="height:100%; width:100%; background-color:#f2f2f2;overflow:hidden">
+	<view class="loading" wx:if="{{if_loading}}">
+		<view style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+			<van-loading type="spinner" color="#fff" vertical text-size="30px" />
+			<view>正在生成图片...=.=</view>
+		</view>
+	</view>
+	<view class="photo">
+		<image src="{{showImageUrl}}"></image>
+		<text>此效果为预览效果，导出后无水印...</text>
+	</view>
+	<view class="btn">
+		<button style="color:#7979f8; border:3px solid #7979f8" bindtap="createOrder" data-type="digital">导出高清照</button>
+		<button style="background-color:#7979f8; color:#fff" bindtap="createOrder" data-type="physical">立即冲印</button>
+	</view>
+</view>

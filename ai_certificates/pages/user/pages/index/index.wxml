@@ -1,0 +1,64 @@
+<!--pages/login/login.wxml-->
+<view class="page-bg">
+	<van-toast id="van-toast" mask="true"  />
+	<van-notify id="van-notify" /> <!-- 验证码提示 -->
+	<view class="page-header">
+		<image src="../../static/image/index/logo.jpg"></image>
+	</view>
+	<view class="page-content">
+		<view class="login" wx:if="{{operate == 'login'}}">
+			<view class="page-fontsize-large page-font-color" style="margin-bottom:5px;">欢迎你！</view>
+			<van-field placeholder="请输入手机号" clearable left-icon="/static/image/index/蓝色用户.svg" model:value="{{userPhone}}" bind:blur="checkPhone" data-phone="{{userPhone}}" maxlength="11" />
+			<van-field placeholder="请输入密码" clearable password left-icon="/static/image/index/蓝色密码.svg" model:value="{{userPassword}}" maxlength="20" />
+
+
+			<van-button block size="large" color="#0000ff83" disabled="{{login_disabled}}" custom-class="normalbutton" bind:click="login">登录</van-button>
+
+			<text class="page-font-color page-fontsize-normal position-left" bind:tap="setForget">忘记密码</text>
+			<text class="page-font-color page-fontsize-normal position-right" bind:tap="setRegister">注册账号</text>
+			<view class="page-font-color page-fontsize-normal" style="margin-top:40px">其他登录方式</view>
+			<view class="other-login">
+				<van-icon name="/static/image/index/微信.svg" size="28px"></van-icon>
+				<van-icon name="/static/image/index/手机.svg" size="28px" bindtap="loginByPhone"></van-icon>
+				<van-icon name="/static/image/index/qq.svg" size="28px"></van-icon>
+			</view>
+		</view>
+		<view class="register" wx:if="{{operate == 'register'}}">
+			<view class="pagte-fontsize-normal page-font-color position-right" style="top:10px" bind:tap="setLogin">返回</view>
+			<view class="page-fontsize-large page-font-color">注册信息如下！</view>
+			<van-field placeholder="请输入手机号" model:value="{{reg_userPhone}}" data-phone="{{reg_userPhone}}" bind:change="setSms" bind:blur="checkPhone" clearable maxlength="11" left-icon="/static/image/index/蓝色用户.svg"></van-field>
+			<van-field model:value="{{reg_userPassword}}" placeholder="请输入密码" clearable password maxlength="20" left-icon="/static/image/index/蓝色密码.svg"></van-field>
+			<van-field placeholder="请重复密码" maxlength="20" clearable bind:change="checkPassword" password left-icon="/static/image/index/蓝色密码.svg"></van-field>
+			<!-- 提示信息 -->
+			<view wx:if="{{showMessage}}" style="color:red; font-size:15px;">提示: {{message}}</view>
+			<van-field placeholder="请输入验证码" clearable use-button-slot label="验证码" titleWidth="55px" maxlength="4" model:value="{{smsCode}}">
+				<van-button slot="button" type="info" custom-class="yanzhen-button" type="info" size="small" disabled="{{sms_disabled}}" bind:click="sendsms">发送验证码</van-button>
+			</van-field>
+			<van-checkbox value="{{checked}}" bind:change="changeChecked" style="position:relative;top:10px;left:4px; " checked-color="#0000ff7b">是否阅读并同意相关协议</van-checkbox>
+			<van-button block size="large" color="#0000ff83" custom-class="normalbutton" style="margin-top:10px" bind:click="register">注册</van-button>
+		</view>
+		<view class="forgetPassword" wx:if="{{operate == 'forgetpassword'}}">
+			<view class="pagte-fontsize-normal page-font-color position-right" style="top:10px" bind:tap="setLogin">返回</view>
+			<view class="page-fontsize-large page-font-color">修改密码！</view>
+			<van-field placeholder="请输入账户" clearable left-icon="/static/image/index/蓝色用户.svg"></van-field>
+			<van-field placeholder="请输入密码" clearable password left-icon="/static/image/index/蓝色密码.svg"></van-field>
+			<van-field placeholder="请重复密码" clearable password left-icon="/static/image/index/蓝色密码.svg"></van-field>
+			<van-field placeholder="请输入验证码" clearable use-button-slot label="验证码" titleWidth="55px">
+				<van-button slot="button" type="info" custom-class="yanzhen-button" type="info" size="small">发送验证码</van-button>
+			</van-field>
+			<van-button block size="large" color="#0000ff83" custom-class="normalbutton" style="margin-top:10px">修改</van-button>
+		</view>
+		<view class="quick-login-by-phone" wx:if="{{operate == 'loginByPhone'}}">
+			<view class="pagte-fontsize-normal page-font-color position-right" style="top:10px" bind:tap="setLogin">返回</view>
+			<view class="page-fontsize-large page-font-color">手机快捷登录！</view>
+			<van-field placeholder="请输入手机" clearable left-icon="/static/image/index/手机.svg"></van-field>
+			<van-field placeholder="请输入验证码" clearable use-button-slot label="验证码" titleWidth="55px">
+				<van-button slot="button" type="info" custom-class="yanzhen-button" type="info" size="small">发送验证码</van-button>
+			</van-field>
+			<van-button block size="large" color="#0000ff83" custom-class="normalbutton" style="margin-top:10px">登录</van-button>
+		</view>
+	</view>
+	<view class="page-footer">
+		Copyright ©2020 chenxiaojian
+	</view>
+</view>

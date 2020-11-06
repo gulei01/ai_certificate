@@ -1,0 +1,76 @@
+.page-bg {
+    background-color: #F2F2F2;
+    height: 100%;
+}
+
+.user-logo-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.user-logo-container text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #7979F8;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+
+}
+
+.user_logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.page-content view {
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+    border-bottom: 1px solid #e2dfdf;
+}
+
+.page-content view text {
+    line-height: 50px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.page-content view .center-small {
+    line-height: 50px;
+    font-weight: 500;
+    margin-left: 35px;
+    position: relative;
+    font-size: 14px;
+
+}
+
+.page-content view image {
+    line-height: 50px;
+    width: 17px;
+    height: 17px;
+    float: right;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+.van-button--small{
+    max-width: 30px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #7979F8;
+}

@@ -1,0 +1,52 @@
+<view style="height:100%;width:100%;background-color:#f2f2f2">
+	<view class="loading" wx:if="{{if_loading}}">
+		<view style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+			<van-loading type="spinner" color="#fff" vertical text-size="30px" />
+			<view>加载中...</view>
+		</view>
+	</view>
+	<view style="height:65%">
+		<swiper indicator-dots class="img-swiper" indicator-active-color="#7979F8" current="{{current}}" bindchange="currentChange">
+			<block wx:for="{{select_spec_list}}">
+				<swiper-item catchtouchmove="stopTouchMove">
+					<image src="{{item.img_url}}" style="height:90%;width:100%"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+
+	</view>
+	<view style="height:200px; background-color:#fff;border-top-left-radius: 15px;border-top-right-radius: 15px;position: absolute;width: 100%;bottom: 0;">
+		<view style="height:50px;width:80%;line-height:50px; color:#7979F8;font-weight:600;margin:0 auto">已选择规格</view>
+		<!-- <view style="height:100px"> -->
+		<scroll-view style="height:100px" scroll-y="true">
+			<view wx:for="{{select_spec_list}}">
+				<view style="height:33px;width:80%;margin:0 auto;position:relative;line-height:33px" bindtap="showSpecInfo" data-index="{{index}}" class="spec-info">
+					<text>{{item.spec_text}}</text>
+					<text style="font-size:smaller;color:gray;margin-left:25px;">{{item.spec_pixel}}</text>
+					<text style="font-size:smaller;color:gray;margin-left:25px;">{{item.spec_size}}</text>
+					<text class="active" wx:if="{{current == index}}" id="active"></text>
+				</view>
+			</view>
+		</scroll-view>
+		<!-- </view> -->
+		<view class="btn-container">
+			<text style="float:left" bindtap="rechoose">重新选择</text>
+			<text style="float:right" bindtap="quickPrint">立即冲印</text>
+		</view>
+		<van-popup show="{{ show }}" position="bottom" custom-style="height: 50%" bind:close="onClose">
+			<view style="width:80%;margin: 0 auto;margin-top:20px;margin-bottom:20px;color:#7979F8;font-weight:700">可选择多种规格</view>
+			<view wx:for="{{all_spec_list}}" style="width:80%;margin:0 auto;">
+				<view style="height:33px;line-height:33px;position:relative" bindtap="chooseSpec" data-index="{{index}}">
+					<text style="margin-right:30px;">{{item.spec_text}}</text>
+					<text style="margin-right:30px;font-size:small;color:gray">{{item.spec_size}}</text>
+					<text style="margin-right:20px;font-size:small;color:gray">{{item.spec_pixel}}</text>
+					<text class="spec_active" wx:if="{{item.spec_active == true}}"></text>
+					<text class="spec_inactive" wx:if="{{item.spec_active == false}}" ></text>
+				</view>
+			</view>
+			<text style="position: absolute;right: 10%;bottom: 20px;padding: 8px 20px 10px 20px;background-color: #7979F8;border-radius: 8px;color: #fff;font-weight: 600;" bindtap="confirm">确定</text>
+
+
+		</van-popup>
+	</view>
+</view>

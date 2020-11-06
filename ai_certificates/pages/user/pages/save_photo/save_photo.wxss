@@ -1,0 +1,58 @@
+/* pages/save_photo/save_photo.wxss */
+.photo {
+    width: 100%;
+    height: 85%;
+}
+
+.photo image {
+    margin: 0 auto;
+    /* margin-top: 30px; */
+    width: 80%;
+    height: 70%;
+    display: block;
+    position: relative;
+    top: 30px
+}
+
+.photo text {
+    position: relative;
+    top: 34px;
+    text-align: center;
+    display: block;
+    color: #7979f8;
+
+}
+
+.loading {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.323);
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    text-align: center;
+    color: white
+}
+
+.btn {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    align-items: center;
+
+}
+
+.btn button {
+    border-radius: 10px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 !important;
+    position: relative;
+    width: 120px !important;
+
+}

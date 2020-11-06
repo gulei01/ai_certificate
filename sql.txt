@@ -1,0 +1,221 @@
+-- MySQL dump 10.13  Distrib 5.7.26, for Win64 (x86_64)
+--
+-- Host: localhost    Database: ai_certificate
+-- ------------------------------------------------------
+-- Server version	5.7.26
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `t_address_info`
+--
+
+DROP TABLE IF EXISTS `t_address_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_address_info` (
+  `address_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '地址id',
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `accept_user` varchar(20) NOT NULL COMMENT '收货人',
+  `accept_address` varchar(255) NOT NULL COMMENT '收货地址',
+  `accept_phone` varchar(11) NOT NULL COMMENT '收货人联系电话',
+  PRIMARY KEY (`address_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_address_info`
+--
+
+LOCK TABLES `t_address_info` WRITE;
+/*!40000 ALTER TABLE `t_address_info` DISABLE KEYS */;
+INSERT INTO `t_address_info` VALUES (31,1,'22','22','22'),(32,1,'1','1','1');
+/*!40000 ALTER TABLE `t_address_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_order_detail`
+--
+
+DROP TABLE IF EXISTS `t_order_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_order_detail` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `order_id` varchar(32) NOT NULL COMMENT '订单id',
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `order_photo_type` varchar(30) NOT NULL COMMENT '图片类型：大一寸 小一寸等',
+  `order_photo_size` varchar(20) NOT NULL COMMENT '图片像素尺寸',
+  `order_photo_bgcolor` varchar(10) NOT NULL COMMENT '图片背景色，白色，红色，蓝色',
+  `order_photo_num` bigint(20) NOT NULL COMMENT '图片份数',
+  `order_photo_price` double(10,2) NOT NULL COMMENT '图片单价',
+  `order_wm_photo` varchar(255) NOT NULL COMMENT '订单详情水印图片',
+  `order_res_photo` varchar(255) DEFAULT NULL COMMENT '订单无水印图片',
+  `order_wm_print_photo` varchar(255) DEFAULT NULL COMMENT '订单打印水印图片',
+  `order_res_print_photo` varchar(255) DEFAULT NULL COMMENT '订单打印无水印图片',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_order_detail`
+--
+
+LOCK TABLES `t_order_detail` WRITE;
+/*!40000 ALTER TABLE `t_order_detail` DISABLE KEYS */;
+INSERT INTO `t_order_detail` VALUES (33,'4169a9981dd211ebbb8d00e04c363764',1,'一寸','295x413px','蓝色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.3Otgf45TI74L3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(34,'7b5fb6b61dd211eb9bf600e04c363764',1,'一寸','295x413px','蓝色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.wjFEb3SvGnFcb747f1c3cca3fa1e90aea8dd0129cbb4.jpg',NULL,NULL,NULL),(35,'7b5fb6b61dd211eb9bf600e04c363764',1,'二寸','413x578px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.64JdMKhwCE11f18521ca14d20c2f538abaced54b58dc.jpg',NULL,NULL,NULL),(36,'7b5fb6b61dd211eb9bf600e04c363764',1,'小一寸','259x377px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.07o0IcoSq2KUda2290613c485439e1b7db9df5591feb.jpg',NULL,NULL,NULL),(37,'6263905c1dd311eb812b00e04c363764',1,'小二寸','413x531px','蓝色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.3SoazXlEt2ya26802abe7f2c9f4bf1ff213acb933fab.jpg',NULL,NULL,NULL),(38,'bef4c19e1ddc11eba71500e04c363764',1,'一寸','295x413px','蓝色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.E7wZCBO4o9jB3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(39,'c7d6586c1ddc11ebadd100e04c363764',1,'一寸','295x413px','蓝色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.feVL3hyXcQHB3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(40,'8974a0261ddd11eb913200e04c363764',1,'一寸','295x413px','',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.TPT8HfF6qpdu9a9ef67219149879cf8d24c1c28b905d.jpg',NULL,NULL,NULL),(41,'8974a0261ddd11eb913200e04c363764',1,'二寸','413x578px','',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.CSfhP75QOzdK643a986535bd96be2eff22ce17caa049.jpg',NULL,NULL,NULL),(42,'8974a0261ddd11eb913200e04c363764',1,'小二寸','413x531px','',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.sCMXaYiqOPtG4012f461981cade01359452c2658d33f.jpg',NULL,NULL,NULL),(43,'8974a0261ddd11eb913200e04c363764',1,'小一寸','259x377px','',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.GJTM6COXjIhk1e2fcd53cf23c8e84f27f652fc571fbc.jpg',NULL,NULL,NULL),(44,'df1563581de011ebb98b00e04c363764',1,'一寸','295x413px','蓝色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.kEHPpLBgWDOd3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(45,'df1563581de011ebb98b00e04c363764',1,'二寸','413x578px','蓝色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.DW3uSpPjYnhM88c51f581e477b514c4fed4a00b43f7d.jpg',NULL,NULL,NULL),(46,'df1563581de011ebb98b00e04c363764',1,'小二寸','413x531px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.ovXglSFnNN3t17278a4ce45da772153fdc427243c86a.jpg',NULL,NULL,NULL),(47,'9aa225141de211eba32d00e04c363764',1,'一寸','295x413px','蓝色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.V9ZpwSZtSY2u3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(48,'35c27d461f1011ebbe191856805eff70',1,'一寸','295x413px','红色',1,300.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.aR6MPc35yv8I2778b3c0ffba82fede916ea32725beab.jpg',NULL,NULL,NULL),(49,'7f36066e1f1011ebb1311856805eff70',1,'一寸','295x413px','蓝色',4,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.gyh2n1BqT97Gbdc6f8c387897b8f2487cd10c09e501e.jpg',NULL,NULL,NULL),(50,'7f36066e1f1011ebb1311856805eff70',1,'二寸','413x578px','蓝色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.wwOOlC1IsVATde5d02946efd29a75568bb84833f27d8.jpg',NULL,NULL,NULL),(51,'7f36066e1f1011ebb1311856805eff70',1,'小二寸','413x531px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.ymYxHKqae8q5b99e637d4f05033e33a8a4a974f0073e.jpg',NULL,NULL,NULL),(52,'7f36066e1f1011ebb1311856805eff70',1,'小一寸','259x377px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.ywQ8FscbyUXq93dd7057622f5632cae36f97cb55bc35.jpg',NULL,NULL,NULL),(53,'9ed88e381f1011ebae211856805eff70',1,'一寸','295x413px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.LgQNp5ghybKr3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(54,'2dd950641f1b11eb8a401856805eff70',1,'一寸','295x413px','白色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.zcZKnDQjWIVq28210d07b138e413946764f993a83c03.jpg',NULL,NULL,NULL),(55,'2dd950641f1b11eb8a401856805eff70',1,'二寸','413x578px','白色',2,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.0keExkbfbALK9ebb6c5b59e1dcc0376c2519dc22ad6e.jpg',NULL,NULL,NULL),(56,'2dd950641f1b11eb8a401856805eff70',1,'小二寸','413x531px','白色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.a7sLqkVFJ9RX97df2938dfe6cb74576011293929ad66.jpg',NULL,NULL,NULL),(57,'2dd950641f1b11eb8a401856805eff70',1,'小一寸','259x377px','白色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.GEIpuLduh5Plbcd2858588ff9fca3972d9a547c6d98e.jpg',NULL,NULL,NULL),(58,'3c336d341fda11eb908100e04c363764',1,'一寸','295x413px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.RYTbjnDfRUvj3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL),(59,'3c336d341fda11eb908100e04c363764',1,'二寸','413x578px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.0AUQvKpqrNEL88c51f581e477b514c4fed4a00b43f7d.jpg',NULL,NULL,NULL),(60,'3c336d341fda11eb908100e04c363764',1,'小二寸','413x531px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.zitFWOm6tiCh17278a4ce45da772153fdc427243c86a.jpg',NULL,NULL,NULL),(61,'3c336d341fda11eb908100e04c363764',1,'小一寸','259x377px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.nEqfyC7gxsRb1d4cb911f4e85dcaf9f72e30149bf787.jpg',NULL,NULL,NULL),(62,'f669bc4a1fdc11ebb04e00e04c363764',1,'一寸','295x413px','蓝色',1,1500.00,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.9iI46q5GnCXD3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `t_order_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_order_info`
+--
+
+DROP TABLE IF EXISTS `t_order_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_order_info` (
+  `order_id` varchar(32) NOT NULL COMMENT '订单编号',
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `order_money` double NOT NULL COMMENT '订单总金额',
+  `order_type` varchar(10) NOT NULL COMMENT '订单类型 1-门店取 2-仅下载 3-快递',
+  `user_id` bigint(20) NOT NULL COMMENT '用户编号',
+  `order_accept_name` varchar(20) DEFAULT NULL COMMENT '收货人名字，默认为空',
+  `order_accept_phone` varchar(11) DEFAULT NULL COMMENT '收货人手机，默认为空',
+  `order_accept_address` varchar(255) DEFAULT NULL COMMENT '收获地址，默认为空',
+  `create_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by_user_id` bigint(20) DEFAULT NULL COMMENT '创建人编号',
+  `update_at` datetime DEFAULT NULL COMMENT '最后更新时间',
+  `update_by_user_id` bigint(20) DEFAULT NULL COMMENT '最后更新人编号',
+  `order_status` tinyint(4) NOT NULL COMMENT '订单状态：0-表示未支付 1-表示已支付',
+  `store_address` varchar(255) DEFAULT NULL COMMENT '门店地址',
+  `store_name` varchar(20) DEFAULT NULL COMMENT '门店名',
+  `store_contact_name` varchar(20) DEFAULT NULL COMMENT '门店联系人',
+  `store_contact_phone` varchar(11) DEFAULT NULL COMMENT ' 门店联系电话',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_order_info`
+--
+
+LOCK TABLES `t_order_info` WRITE;
+/*!40000 ALTER TABLE `t_order_info` DISABLE KEYS */;
+INSERT INTO `t_order_info` VALUES ('4169a9981dd211ebbb8d00e04c363764',26,300,'2',1,NULL,NULL,NULL,'2020-11-03 20:44:04',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('7b5fb6b61dd211eb9bf600e04c363764',27,7500,'1',1,NULL,NULL,NULL,'2020-11-03 20:45:41',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B22-222打印店','啦啦啦打印店','chenchenchen','15013225799'),('6263905c1dd311eb812b00e04c363764',28,300,'2',1,NULL,NULL,NULL,'2020-11-03 20:52:09',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('bef4c19e1ddc11eba71500e04c363764',29,300,'2',1,NULL,NULL,NULL,'2020-11-03 21:59:09',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('c7d6586c1ddc11ebadd100e04c363764',30,300,'2',1,NULL,NULL,NULL,'2020-11-03 21:59:24',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('8974a0261ddd11eb913200e04c363764',31,6000,'1',1,NULL,NULL,NULL,'2020-11-03 22:04:49',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B22-222打印店','啦啦啦打印店','chenchenchen','15013225799'),('df1563581de011ebb98b00e04c363764',32,10500,'1',1,NULL,NULL,NULL,'2020-11-03 22:28:41',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B25-614打印店','哈哈哈打印店','chenxiaojian','15013225799'),('9aa225141de211eba32d00e04c363764',33,300,'2',1,NULL,NULL,NULL,'2020-11-03 22:41:05',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('35c27d461f1011ebbe191856805eff70',34,300,'2',1,NULL,NULL,NULL,'2020-11-05 10:40:04',NULL,NULL,NULL,1,NULL,NULL,NULL,NULL),('7f36066e1f1011ebb1311856805eff70',35,16500,'1',1,NULL,NULL,NULL,'2020-11-05 10:42:07',NULL,NULL,NULL,0,'广东省广州市番禺区广州大学城广州大学B25-614打印店','啦啦啦','chenxiaojian','15013225799'),('9ed88e381f1011ebae211856805eff70',36,1500,'3',1,'chenxiaojian','15013225799','广东省广州市番禺区广州大学城广州大学','2020-11-05 10:43:00',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL),('2dd950641f1b11eb8a401856805eff70',37,12000,'1',1,NULL,NULL,NULL,'2020-11-05 11:58:35',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B25-614打印店','啦啦啦','chenxiaojian','15013225799'),('3c336d341fda11eb908100e04c363764',38,10500,'1',1,NULL,NULL,NULL,'2020-11-06 10:46:13',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B25-614打印店','啦啦啦','chenxiaojian','15013225799'),('f669bc4a1fdc11ebb04e00e04c363764',39,1500,'1',1,NULL,NULL,NULL,'2020-11-06 11:05:45',NULL,NULL,NULL,1,'广东省广州市番禺区广州大学城广州大学B25-614打印店','啦啦啦','chenxiaojian','15013225799');
+/*!40000 ALTER TABLE `t_order_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_store_info`
+--
+
+DROP TABLE IF EXISTS `t_store_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_store_info` (
+  `store_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '门店编号',
+  `store_address` varchar(255) NOT NULL COMMENT '门店地址',
+  `store_name` varchar(20) NOT NULL COMMENT '门店名称',
+  `store_contact_name` varchar(20) NOT NULL COMMENT '门店联系人姓名',
+  `user_id` bigint(20) NOT NULL COMMENT '门店登录账号id',
+  `store_contact_phone` varchar(11) NOT NULL COMMENT '门店联系电话',
+  `store_manager_id` bigint(20) DEFAULT NULL COMMENT '门店管理员用户编号',
+  `create_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by_user_id` bigint(20) DEFAULT NULL COMMENT '创建人编号',
+  `update_at` datetime DEFAULT NULL COMMENT '最后更新时间',
+  `update_by_user_id` bigint(20) DEFAULT NULL COMMENT '最后更新人编号',
+  PRIMARY KEY (`store_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_store_info`
+--
+
+LOCK TABLES `t_store_info` WRITE;
+/*!40000 ALTER TABLE `t_store_info` DISABLE KEYS */;
+INSERT INTO `t_store_info` VALUES (3,'广东省广州市番禺区广州大学城广州大学B25-614打印店','啦啦啦','chenxiaojian',1,'15013225799',NULL,NULL,NULL,NULL,NULL),(4,'1111111','111111','111111',1,'11111',NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `t_store_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_user_cart`
+--
+
+DROP TABLE IF EXISTS `t_user_cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_user_cart` (
+  `cart_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '购物车id',
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `cart_user_watermarking_photo` varchar(255) NOT NULL COMMENT '用户处理后水印照片',
+  `cart_user_result_photo` varchar(255) DEFAULT NULL COMMENT '用户处理后高清照片',
+  `cart_photo_bgcolor` varchar(10) NOT NULL COMMENT '照片背景颜色',
+  `cart_photo_spec_text` varchar(10) NOT NULL COMMENT '照片规格',
+  `cart_photo_pixel` varchar(20) NOT NULL COMMENT '照片像素尺寸',
+  PRIMARY KEY (`cart_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_user_cart`
+--
+
+LOCK TABLES `t_user_cart` WRITE;
+/*!40000 ALTER TABLE `t_user_cart` DISABLE KEYS */;
+INSERT INTO `t_user_cart` VALUES (5,1,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.CEnwUZeN0BmS3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,'蓝色','一寸','295x413px'),(6,1,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.sbHSbm2HiaKu28210d07b138e413946764f993a83c03.jpg',NULL,'白色','一寸','295x413px'),(7,1,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.uxorEmo8UjsD3da1b09b9e512974c68bc9bb233b3375.jpg',NULL,'蓝色','一寸','295x413px');
+/*!40000 ALTER TABLE `t_user_cart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_user_info`
+--
+
+DROP TABLE IF EXISTS `t_user_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_user_info` (
+  `user_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户编号',
+  `user_phone` varchar(11) NOT NULL COMMENT '用户手机号',
+  `user_password` varchar(20) NOT NULL COMMENT '用户密码',
+  `user_type` tinyint(4) NOT NULL COMMENT '1-顾客 2-门店管理员 3-平台管理员',
+  `create_at` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_by_user_id` bigint(20) DEFAULT NULL COMMENT '创建人编号',
+  `update_at` datetime DEFAULT NULL COMMENT '最后更新时间',
+  `update_by_user_id` bigint(20) DEFAULT NULL COMMENT '最后更新人员编号',
+  `user_logo` varchar(255) DEFAULT NULL COMMENT '用户头像',
+  `user_name` varchar(20) DEFAULT NULL COMMENT '用户名',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_user_info`
+--
+
+LOCK TABLES `t_user_info` WRITE;
+/*!40000 ALTER TABLE `t_user_info` DISABLE KEYS */;
+INSERT INTO `t_user_info` VALUES (1,'15013225799','123',1,'2020-09-29 21:16:36',NULL,'2020-10-21 21:16:45',NULL,'http://127.0.0.1:7777/upload_img/wx4238d15d5bf87ed9.o6zAJs05T7OnJhgDWiKTjo-UOFcU.bi4rnAsndBiw31abc1f61a678a02636c84001a8f5534.jpg','chenxiaojian');
+/*!40000 ALTER TABLE `t_user_info` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-11-06 12:09:39

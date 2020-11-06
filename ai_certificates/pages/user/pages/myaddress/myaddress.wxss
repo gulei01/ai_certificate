@@ -1,0 +1,79 @@
+/* pages/myaddress/myaddress.wxss */
+
+.page-bg {
+    background-color: #f2f2f2;
+    min-height: 100%;
+}
+
+.item {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: relative;
+}
+
+.item .image-container {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.item view image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-info {
+    position: absolute;
+    left: 65px;
+    display: inline-block;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.user-info .user-info-name {
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+    display: inline-block;
+}
+
+.user-info .user-info-phone {
+    display: inline-block;
+    font-size: 13px;
+    color: gray;
+    position: relative;
+    left: 5px;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-info-addr {
+    position: absolute;
+    top: 25px;
+    left: 65px;
+    font-size: 10px;
+    width: 210px;
+}
+
+.mod-addr {
+    float: right;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    font-size: 14px;
+    color: gray;
+    z-index: 99;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+
+</head>
+
+<body style="position: relative;">
+    <div class="content">
+        <img src="../image/logo.jpg" alt="">
+        <form style="position: relative;"  autocomplete="off" onsubmit="return false" method="post">
+            <div class="input">
+                <div placeholder="账号"><input type="text" autocomplete="off" name="userPhone" id="userPhone"></div>
+            </div>
+            <div class="input">
+                <div placeholder="密码"><input type="password" autocomplete="off" name="userPassword" id="userPassword"></div>
+            </div>
+            <div><button onclick="login()">登录</button></div>
+        </form>
+    </div>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>
